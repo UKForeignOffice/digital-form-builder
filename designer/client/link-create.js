@@ -14,20 +14,8 @@ class LinkCreate extends React.Component {
 
     // Apply
     const { data } = this.props
-    const copy = clone(data)
-    const page = copy.pages.find(p => p.path === from)
-
-    const next = { path: to }
-
-    if (condition) {
-      next.if = condition
-    }
-
-    if (!page.next) {
-      page.next = []
-    }
-
-    page.next.push(next)
+    const next = createNext(to, condition)
+    const copy = addLinkToPage(data, from, next)
 
     console.log(data)
     data.save(copy)
@@ -76,3 +64,23 @@ class LinkCreate extends React.Component {
 }
 
 export default LinkCreate
+
+export function addLinkToPage (data, from, next) {
+  const copy = clone(data)
+  const page = copy.pages.find(p => p.path === from)
+
+  if (!page.next) {
+    page.next = []
+  }
+
+  page.next.push(next)
+  return copy
+}
+
+export function createNext (to, condition) {
+  const next = { path: to }
+  if (condition) {
+    next.if = condition
+  }
+  return next
+}
