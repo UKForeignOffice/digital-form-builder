@@ -48,6 +48,7 @@
     "@hapi/code": "^8.0.1",
     "@hapi/lab": "^22.0.4",
     "@xgovformbuilder/lab-babel": "2.0.0",
+    "sinon": "^9.0.2",
     "standard": "14.3.3"
   },
   "peerDependencies": {
