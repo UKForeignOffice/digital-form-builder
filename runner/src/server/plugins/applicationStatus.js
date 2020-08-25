@@ -103,14 +103,21 @@ const applicationStatus = {
         method: 'post',
         path: '/status',
         handler: async (request, h) => {
+          request.log(['info', 'payment'], { message: 'Submitting payment retry' })
+
           const { payService, cacheService } = request.services([])
           const { pay } = await cacheService.getState(request)
           const { meta } = pay
           meta.attempts++
 
+          request.log(['info', 'payment'], { message: `Retry attempts ${meta.attempts}` })
+
           // TODO:- let payService handle shortid.generate()
           const reference = `FCO-${shortid.generate()}`
           const res = await payService.payRequest(meta.amount, reference, meta.description, meta.payApiKey)
+
+          console.log('Payment', res)
+          request.log(['info', 'payment'], { message: `Redirect URL ${res._links.next_url.href}` })
 
           await cacheService.mergeState(request, {
             pay: {
