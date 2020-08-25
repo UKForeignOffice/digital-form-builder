@@ -107,10 +107,20 @@ const applicationStatus = {
           const { pay } = await cacheService.getState(request)
           const { meta } = pay
           meta.attempts++
+
           // TODO:- let payService handle shortid.generate()
           const reference = `FCO-${shortid.generate()}`
           const res = await payService.payRequest(meta.amount, reference, meta.description, meta.payApiKey)
-          await cacheService.mergeState(request, { pay: { payId: res.payment_id, reference, self: res._links.self.href, meta } })
+
+          await cacheService.mergeState(request, {
+            pay: {
+              payId: res.payment_id,
+              reference,
+              self: res._links.self.href,
+              meta
+            }
+          })
+
           return h.redirect(res._links.next_url.href)
         }
       })
