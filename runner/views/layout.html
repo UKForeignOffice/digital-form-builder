@@ -134,6 +134,7 @@
 {% block footer %}
     {{ govukFooter({
         meta: {
+
             items: [{
                 href: privacyPolicyUrl,
                 text: 'Privacy'
@@ -143,7 +144,18 @@
             }, {
                 href: '/help/terms-and-conditions',
                 text: 'Terms and Conditions'
+            }, {
+                {% if serviceName == 'Prove Your Eligibility to a Foreign Government' %}
+                href: '/help/accessibility-statement-prove-eligible',
+                text: 'Accessibility statement'
+                {% endif %}
+
+                {% if serviceName == 'Apply for coronavirus overseas loan' %}
+                 href: '/help/accessibility-statement-apply-loan',
+                text: 'Accessibility statement'
+                {% endif %}
             }]
+
         }
     }) }}
 {% endblock %}
