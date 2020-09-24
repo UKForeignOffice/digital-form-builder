@@ -133,8 +133,8 @@
 
 {% block footer %}
     {{ govukFooter({
-        meta: {
     {% if serviceName == 'Prove Your Eligibility to a Foreign Government' %}
+        meta: {
             items: [{
                 href: privacyPolicyUrl,
                 text: 'Privacy'
@@ -151,7 +151,8 @@
              }]
     {% endif %}
     {% if serviceName == 'Apply for coronavirus overseas loan' %}
-                items: [{
+        meta: {
+            items: [{
                 href: privacyPolicyUrl,
                 text: 'Privacy'
                 }, {
