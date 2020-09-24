@@ -132,6 +132,7 @@
 
 
 {% block footer %}
+    {% if serviceName == 'Prove Your Eligibility to a Foreign Government' %}
     {{ govukFooter({
         meta: {
             items: [{
@@ -143,9 +144,36 @@
             }, {
                 href: '/help/terms-and-conditions',
                 text: 'Terms and Conditions'
+            }, {
+                href: '/help/accessibility-statement-prove-eligible',
+                text: 'Accessibility statement'
+
+             }]
+    }
+    }) }}
+    {% endif %}
+    
+    {% if serviceName == 'Apply for coronavirus overseas loan' %}
+    {{ govukFooter({
+        meta: {
+            items: [{
+                href: privacyPolicyUrl,
+                text: 'Privacy'
+                }, {
+                href: '/help/cookies',
+                text: 'Cookies'
+                }, {
+                href: '/help/terms-and-conditions',
+                text: 'Terms and Conditions'
+                }, {
+                 href: '/help/accessibility-statement-apply-loan',
+                text: 'Accessibility statement'
+
             }]
+
         }
     }) }}
+    {% endif %}
 {% endblock %}
 
 
