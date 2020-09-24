@@ -34,7 +34,7 @@ module.exports = {
         method: 'get',
         path: '/help/accessibility-statement-apply-loan',
         handler: async (request, h) => {
-          return h.view('/help/accessibility-statement-apply-loan')
+          return h.view('help/accessibility-statement-apply-loan')
         }
       })
 
