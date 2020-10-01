@@ -151,9 +151,8 @@
              }]
     }
     }) }}
-    {% endif %}
-    
-    {% if serviceName == 'Apply for coronavirus overseas loan' %}
+
+    {% elseif serviceName == 'Apply for coronavirus overseas loan' %}
     {{ govukFooter({
         meta: {
             items: [{
@@ -172,6 +171,22 @@
             }]
 
         }
+    }) }}
+    {% else %}
+    {{ govukFooter({
+            meta: {
+                items: [{
+                href: privacyPolicyUrl,
+                text: 'Privacy'
+                }, {
+                href: '/help/cookies',
+                text: 'Cookies'
+                }, {
+                href: '/help/terms-and-conditions',
+                text: 'Terms and Conditions'
+    }]
+
+    }
     }) }}
     {% endif %}
 {% endblock %}
