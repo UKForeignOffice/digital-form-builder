@@ -23,6 +23,20 @@ module.exports = {
           return h.view('help/terms-and-conditions')
         }
       })
+      server.route({
+        method: 'get',
+        path: '/help/accessibility-statement-prove-eligible',
+        handler: async (request, h) => {
+          return h.view('help/accessibility-statement-prove-eligible')
+        }
+      })
+      server.route({
+        method: 'get',
+        path: '/help/accessibility-statement-apply-loan',
+        handler: async (request, h) => {
+          return h.view('help/accessibility-statement-apply-loan')
+        }
+      })
 
       server.route({
         method: 'get',
