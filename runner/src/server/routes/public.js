@@ -3,7 +3,7 @@ module.exports = [{
   path: '/assets/govuk-template.js',
   options: {
     handler: {
-      file: 'server/public/static/govuk-template.js'
+      file: 'public/static/govuk-template.js'
     }
   }
 }, {
